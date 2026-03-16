@@ -36,3 +36,20 @@ export const handleSubmitResearch = async (s: string) => {
 
   return res;
 };
+
+export async function UpdateProductAction(data: FormData) {
+    const name = String(data.get("name"));
+    const price = Number(data.get("price"));
+    const description = String(data.get("description"));
+    const id = Number(data.get("id"));
+    await prisma.product.update({
+        where: {
+            id: id
+        },
+        data: {
+            name,
+            price,
+            description
+        }
+    });
+}

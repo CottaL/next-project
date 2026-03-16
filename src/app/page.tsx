@@ -5,13 +5,6 @@ export default async function Home() {
   return (
     <div>
       <h1>Home Page</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link href="/pagedemo">Go to PageDemo</Link>
-          </li>
-        </ul>
-      </nav>
       <h2>Our products</h2>
       {products.map((product : any) => (
         <div key={product.id}>

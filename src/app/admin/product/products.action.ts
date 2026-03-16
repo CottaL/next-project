@@ -25,7 +25,7 @@ export const handleSubmitResearch = async (s: string) => {
   const res = foundproducts.map((p) => {
     const prod: Product = {
       name: p.name,
-      price: p.price || 0,
+      price: Number(p.price) || 0,
       description: p.description || "",
       id: p.id,
     };
@@ -38,18 +38,18 @@ export const handleSubmitResearch = async (s: string) => {
 };
 
 export async function UpdateProductAction(data: FormData) {
-    const name = String(data.get("name"));
-    const price = Number(data.get("price"));
-    const description = String(data.get("description"));
-    const id = Number(data.get("id"));
-    await prisma.product.update({
-        where: {
-            id: id
-        },
-        data: {
-            name,
-            price,
-            description
-        }
-    });
+  const name = String(data.get("name"));
+  const price = Number(data.get("price"));
+  const description = String(data.get("description"));
+  const id = Number(data.get("id"));
+  await prisma.product.update({
+    where: {
+      id: id
+    },
+    data: {
+      name,
+      price,
+      description
+    }
+  });
 }

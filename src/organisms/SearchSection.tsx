@@ -32,14 +32,15 @@ const SearchSection = ({
       <h2>Search Product</h2>
       <SearchBar value={searchTerms} handleChangeValue={handleChangeSearch} />
       <MyButton onClick={handleSubmitresearch} label="Rechercher" />
-
-      {products
-        ? products.map((p) => {
-          return <ProductCard key={p.id} product={p} />;
-        })
-        : fullProductList.map((p) => {
-          return <ProductCard key={p.id} product={p} />;
-        })}
+      <div className="grid grid-cols-5 gap-4">
+        {products
+          ? products.map((p) => {
+            return <ProductCard key={p.id} product={p} />;
+          })
+          : fullProductList.map((p) => {
+            return <ProductCard key={p.id} product={p} />;
+          })}
+      </div>
     </>
   );
 };

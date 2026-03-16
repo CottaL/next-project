@@ -6,9 +6,9 @@ export default async function Home() {
   return (
     <>
       <main className="flex-grow">
-        <h1>Home Page</h1>
-        <h2>Our products</h2>
-        <div className="grid grid-cols-3 grid-rows-3 align-center">
+        <h1 className="text-center">Home Page</h1>
+        <h2 className="text-center">Our products</h2>
+        <div className="grid grid-cols-6 gap-4">
           {products.map((product: any) => (
             <><Card
               key={product.id}

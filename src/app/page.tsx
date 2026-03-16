@@ -14,7 +14,8 @@ export default async function Home() {
               key={product.id}
               title={product.name}
               description={product.description}
-              price={product.price.toString()} />
+              price={product.price.toString()} 
+              />
              
               <Link href={`/admin/product/update/${product.id}`}>Modify Product</Link>
                <br />

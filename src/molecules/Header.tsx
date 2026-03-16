@@ -11,7 +11,6 @@ export default function Header() {
                         <Link className="text-blue-500 hover:text-blue-700" href="/">Home</Link>
                         <Link className="text-blue-500 hover:text-blue-700" href="/admin/product">Create Product</Link>
                         <Link className="text-blue-500 hover:text-blue-700" href="/admin/product/list">List Products</Link>
-                        <Link className="text-blue-500 hover:text-blue-700" href="/pagedemo">Page Demo</Link>
                     </div>
                 </div>
             </div>

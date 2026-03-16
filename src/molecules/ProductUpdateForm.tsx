@@ -1,5 +1,9 @@
 import CreateProductAction, { DeleteProductAction, UpdateProductAction } from "@/app/admin/product/products.action";
 import MyButton from "@/atoms/button";
+import Label from "@/atoms/Label";
+import Input from "@/atoms/Input";
+import Button from "@/atoms/button";
+import ContainerForm from "@/atoms/ContainerForm";
 
 interface Product {
   id: number;
@@ -16,44 +20,46 @@ interface ProductFormProps {
 export default function ProductForm({ mode, product }: ProductFormProps) {
   if (mode === 'create') {
     return (
-      <form action={CreateProductAction}>
-        <label htmlFor="name">Name:</label>
-        <input type="text" id="name" name="name" />
-        <br />
-        <label htmlFor="price">Price:</label>
-        <input type="number" id="price" name="price" />
-        <br />
-        <label htmlFor="description">Description:</label>
-        <input type="text" id="description" name="description" />
-        <br />
-        <button type="submit">Create Product</button>
-      </form>
+      <ContainerForm>
+        <form action={CreateProductAction}>
+          <Label htmlFor="name">Name:</Label>
+          <Input type="text" id="name" name="name" />
+          <br />
+          <Label htmlFor="price">Price:</Label>
+          <Input type="number" id="price" name="price" />
+          <br />
+          <Label htmlFor="description">Description:</Label>
+          <Input type="text" id="description" name="description" />
+          <br />
+          <MyButton type="submit">Create Product</MyButton>
+        </form>
+      </ContainerForm>
     );
   } else if (mode === 'update' && product) {
     return (
-      <>
+      <ContainerForm>
         <form action={UpdateProductAction}>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" defaultValue={product.name} />
+          <Label htmlFor="name">Name:</Label>
+          <Input type="text" id="name" name="name" defaultValue={product.name} />
           <br />
-          <label htmlFor="price">Price:</label>
-          <input type="number" id="price" name="price" defaultValue={String(product.price)} />
+          <Label htmlFor="price">Price:</Label>
+          <Input type="number" id="price" name="price" defaultValue={String(product.price)} />
           <br />
-          <label htmlFor="description">Description:</label>
-          <input type="text" id="description" name="description" defaultValue={product.description ?? ""} />
+          <Label htmlFor="description">Description:</Label>
+          <Input type="text" id="description" name="description" defaultValue={product.description ?? ""} />
           <br />
-          <label htmlFor="id" hidden>ID:</label>
-          <input type="number" id="id" name="id" value={String(product.id)} hidden readOnly />
+          <Label htmlFor="id" hidden>ID:</Label>
+          <Input type="number" id="id" name="id" value={String(product.id)} hidden readOnly />
           <br />
-          <button type="submit">Update Product</button>
+          <Button type="submit">Update Product</Button>
         </form>
         <form action={DeleteProductAction}>
-          <label htmlFor="id" hidden>ID:</label>
-          <input type="number" id="id" name="id" value={String(product.id)} hidden readOnly />
+          <Label htmlFor="id" hidden>ID:</Label>
+          <Input type="number" id="id" name="id" value={String(product.id)} hidden readOnly />
           <br />
-          <button type="submit">Delete Product</button>
+          <Button type="submit">Delete Product</Button>
         </form>
-      </>
+      </ContainerForm>
     );
   }
   return null;

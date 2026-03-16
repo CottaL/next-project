@@ -1,13 +1,18 @@
 "use client";
-import { Button } from "@mui/material";
+import { Button, ButtonProps as MuiButtonProps } from "@mui/material";
+import { ReactNode } from "react";
 
-type ButtonProps = {
-  onClick: () => unknown;
-  label: string;
+type MyButtonProps = MuiButtonProps & {
+  label?: string;
+  children?: ReactNode;
 };
 
-const MyButton = ({ onClick, label }: ButtonProps) => {
-  return <Button onClick={onClick}>{label}</Button>;
+const MyButton = ({ onClick, label, children, ...props }: MyButtonProps) => {
+  return (
+    <Button onClick={onClick} {...props}>
+      {label || children}
+    </Button>
+  );
 };
 
 export default MyButton;

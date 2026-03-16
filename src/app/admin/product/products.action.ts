@@ -25,7 +25,7 @@ export const handleSubmitResearch = async (s: string) => {
   const res = foundproducts.map((p) => {
     const prod: Product = {
       name: p.name,
-      price: p.price.toNumber() || 0,
+      price: p.price || 0,
       description: p.description || "",
       id: p.id,
     };

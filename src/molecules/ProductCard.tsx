@@ -8,7 +8,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div>
       <p>{product.name}</p>
-      <p>{product.price.toString()}€</p>
+      <p>{product.price}€</p>
     </div>
   );
 };

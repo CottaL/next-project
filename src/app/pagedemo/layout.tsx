@@ -1,15 +1,12 @@
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
       <body>
-        Main Layout
+        <p>Layout niveau 2</p>
         {children}
       </body>
-    </html>
   );
 }

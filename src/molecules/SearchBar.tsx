@@ -5,7 +5,7 @@ import { ChangeEvent } from "react";
 
 type SearchBarProps = {
   value: string;
-  handleChangeValue: (e:ChangeEvent<HTMLInputElement>) => void;
+  handleChangeValue: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const SearchBar = ({ value, handleChangeValue }: SearchBarProps) => {

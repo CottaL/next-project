@@ -24,13 +24,13 @@ export default async function Page() {
       <div className="container mx-auto w-full max-w-lg bg-white p-4 rounded-lg shadow-lg">
         <h1>New Product</h1>
         <form action={CreateProductAction} className="space-y-4 p-4 m-4 align-center justify-center items-center">
-          <Label htmlFor="name" label="Name:" />
+          <Label htmlFor="name">Name:</Label>
           <Input id="name" name="name" type="text" />
           <br />
-          <Label htmlFor="price" label="Price:" />
+          <Label htmlFor="price">Price:</Label>
           <Input id="price" name="price" type="number" />
           <br />
-          <Label htmlFor="description" label="Description:" />
+          <Label htmlFor="description">Description:</Label>
           <Input id="description" name="description" type="text" />
           <br />
           <Button type="submit">Create Product</Button>

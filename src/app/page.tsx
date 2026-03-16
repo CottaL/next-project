@@ -1,3 +1,4 @@
+import Link from "next/link";
 import GetProduct from "./lib/GetProduct";
 import Card from "@/molecules/Card";
 export default async function Home() {
@@ -9,12 +10,16 @@ export default async function Home() {
         <h2>Our products</h2>
         <div className="grid grid-cols-3 grid-rows-3 align-center">
           {products.map((product: any) => (
-            <Card
+            <><Card
               key={product.id}
               title={product.name}
               description={product.description}
-              price={product.price.toString()}
-            />
+              price={product.price.toString()} />
+             
+              <Link href={`/admin/product/update/${product.id}`}>Modify Product</Link>
+               <br />
+            </>
+
           ))}
         </div>
       </main>

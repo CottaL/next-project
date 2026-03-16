@@ -1,6 +1,7 @@
 "use server";
 import { Product } from "@/type";
 import { prisma } from "../../lib/prisma";
+import { redirect } from "next/navigation";
 
 export default async function CreateProductAction(data: FormData) {
   const name = String(data.get("name"));
@@ -14,6 +15,7 @@ export default async function CreateProductAction(data: FormData) {
       description,
     },
   });
+  redirect('/');
 }
 
 export const handleSubmitResearch = async (s: string) => {
@@ -25,7 +27,6 @@ export const handleSubmitResearch = async (s: string) => {
   const res = foundproducts.map((p) => {
     const prod: Product = {
       name: p.name,
-      price: p.price || 0,
       price: p.price || 0,
       description: p.description || "",
       id: p.id,
@@ -53,6 +54,7 @@ export async function UpdateProductAction(data: FormData) {
             description
         }
     });
+    redirect('/');
 }
 
 export async function DeleteProductAction(data: FormData) {
@@ -62,4 +64,5 @@ export async function DeleteProductAction(data: FormData) {
             id: id
         }
     });
+    redirect('/');
 }

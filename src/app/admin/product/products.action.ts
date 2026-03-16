@@ -26,6 +26,7 @@ export const handleSubmitResearch = async (s: string) => {
     const prod: Product = {
       name: p.name,
       price: p.price || 0,
+      price: p.price || 0,
       description: p.description || "",
       id: p.id,
     };
@@ -50,6 +51,15 @@ export async function UpdateProductAction(data: FormData) {
             name,
             price,
             description
+        }
+    });
+}
+
+export async function DeleteProductAction(data: FormData) {
+    const id = Number(data.get("id"));
+    await prisma.product.delete({
+        where: {
+            id: id
         }
     });
 }

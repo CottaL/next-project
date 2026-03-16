@@ -5,3 +5,13 @@ export default function GetProduct() {
         prisma.product.findMany()
     );
 }
+
+export async function GetProductById(id: number) {
+    return (
+        prisma.product.findFirst({
+            where: {
+                id: id
+            }
+        })
+    );
+}

@@ -1,4 +1,4 @@
-import CreateProductAction from "./products.action";
+import {CreateProductAction} from "./products.action";
 
 export default function Page() {
   return (

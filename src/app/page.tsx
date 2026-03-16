@@ -18,6 +18,7 @@ export default async function Home() {
           <h3>{product.name}</h3>
           <p>{product.description}</p>
           <p>Price: ${product.price}</p>
+          <Link href={`/admin/product/update/${product.id}`}>Modify product</Link>
         </div>
       ))}
     </div>

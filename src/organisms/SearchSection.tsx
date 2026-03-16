@@ -1,6 +1,6 @@
 "use client";
 import MyButton from "@/atoms/button";
-import ProductCard from "@/atoms/ProductCard";
+import ProductCard from "@/molecules/ProductCard";
 import SearchBar from "@/molecules/SearchBar";
 import { Product } from "@/type";
 import { ChangeEvent, useEffect, useState } from "react";

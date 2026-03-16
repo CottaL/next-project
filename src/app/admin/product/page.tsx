@@ -1,7 +1,19 @@
+import GetProduct from "@/app/lib/GetProduct";
 import CreateProductAction, { handleSubmitResearch } from "./products.action";
 import SearchSection from "@/organisms/SearchSection";
+import { Product } from "@/type";
 
 export default async function Page() {
+  const allProducts = (await GetProduct()).map((p) => {
+    const res: Product = {
+      name: p.name,
+      id: p.id,
+      description: p.description || "",
+      price: p.price,
+    };
+
+    return res;
+  });
 
   return (
     <div>
@@ -19,7 +31,10 @@ export default async function Page() {
         <button type="submit">Create Product</button>
       </form>
 
-      <SearchSection handleSubmit={handleSubmitResearch} />
+      <SearchSection
+        fullProductList={allProducts}
+        handleSubmit={handleSubmitResearch}
+      />
     </div>
   );
 }

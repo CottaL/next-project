@@ -1,9 +1,11 @@
 import Link from "next/link";
 import GetProduct from "./lib/GetProduct";
+import Header from "./header/page";
 export default async function Home() {
   const products = await GetProduct();
   return (
     <div>
+      <Header />
       <h1>Home Page</h1>
       <nav>
         <ul>

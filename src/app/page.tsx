@@ -5,7 +5,7 @@ export default async function Home() {
   const products = await GetProduct();
   return (
     <>
-      <main className="flex-grow">
+      <main className="grow">
         <h1 className="text-center">Home Page</h1>
         <h2 className="text-center">Our products</h2>
         <div className="grid grid-cols-6 gap-4">

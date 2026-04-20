@@ -10,13 +10,12 @@ export default async function Home() {
         <h2 className="text-center">Our products</h2>
         <div className="grid grid-cols-6 gap-4">
           {products.map((product: any) => (
-            <><Card
+            <Card
               key={product.id}
               id={product.id}
               title={product.name}
               description={product.description}
               price={product.price.toString()} />
-            </>
           ))}
         </div>
       </main>

@@ -4,7 +4,12 @@ import { createSession, deleteSession } from "../lib/session";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
 
-export default async function CreateUserAction(data: FormData) {
+export type AuthState = { error?: string };
+
+export default async function CreateUserAction(
+  _prev: AuthState,
+  data: FormData,
+): Promise<AuthState> {
   const name = String(data.get("name"));
   const password = String(data.get("password"));
   const email = String(data.get("email"));
@@ -14,7 +19,7 @@ export default async function CreateUserAction(data: FormData) {
   });
 
   if (existingUser) {
-    throw new Error("Un utilisateur avec cet email existe deja.");
+    return { error: "Un utilisateur avec cet email existe deja." };
   }
 
   const user = await prisma.user.create({
@@ -25,7 +30,6 @@ export default async function CreateUserAction(data: FormData) {
     },
   });
 
-  // Automatically log in after signup
   await createSession({
     userId: user.id,
     email: user.email,
@@ -35,7 +39,10 @@ export default async function CreateUserAction(data: FormData) {
   redirect("/");
 }
 
-export async function LoginUserAction(data: FormData) {
+export async function LoginUserAction(
+  _prev: AuthState,
+  data: FormData,
+): Promise<AuthState> {
   const email = String(data.get("email"));
   const password = String(data.get("password"));
 
@@ -44,13 +51,13 @@ export async function LoginUserAction(data: FormData) {
   });
 
   if (!user) {
-    throw new Error("Email ou mot de passe incorrect.");
+    return { error: "Email ou mot de passe incorrect." };
   }
 
   const passwordMatch = bcrypt.compareSync(password, user.password);
 
   if (!passwordMatch) {
-    throw new Error("Email ou mot de passe incorrect.");
+    return { error: "Email ou mot de passe incorrect." };
   }
 
   await createSession({

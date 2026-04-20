@@ -1,11 +1,15 @@
+"use client";
+import { useActionState } from "react";
 import CreateUserAction from "../auth.actions";
 import Link from "next/link";
 
 const Signup = () => {
+  const [state, formAction] = useActionState(CreateUserAction, {});
+
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh]">
       <h1 className="text-2xl font-bold mb-6">Creer un compte</h1>
-      <form className="flex flex-col items-center gap-3 w-80" action={CreateUserAction}>
+      <form className="flex flex-col items-center gap-3 w-80" action={formAction}>
         <label className="flex flex-col items-center w-full" htmlFor="email">
           Email
           <input
@@ -43,6 +47,9 @@ const Signup = () => {
           type="submit"
           value="S'inscrire"
         />
+        {state?.error && (
+          <p className="text-red-500 text-sm">{state.error}</p>
+        )}
       </form>
       <p className="mt-4 text-sm">
         Deja un compte ?{" "}
